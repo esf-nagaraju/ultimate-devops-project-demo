@@ -16,5 +16,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         java: [11,17]
     steps:
-      <<: *setup-java
-      - run: mvn verify
+      - uses: ./.github/actions/setup-java
+      with:
+        java: 17
+    
