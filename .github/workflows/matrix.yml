@@ -1,18 +1,21 @@
-name: Matrix CI
-on: [ push ]
+name: "Java CI/CD Master Pipeline"
 
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  MAVEN_CACHE: ~/.m2/repository
+#  SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        java: [11,17]
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: ./.github/actions/setup-java
-        with:
-          java: 17
-    
+  # 1. Lint job
+  lint:
+    name: Lint Code Style
+    uses: ./.github/workflows/lint-template.yml
+    with:
+      java-version: 17
+#    secrets:
+#      SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}

@@ -1,0 +1,34 @@
+# ------------------------------------------
+# lint-template.yml
+# Lints Java code using Checkstyle
+# ------------------------------------------
+    name: "Lint Template"
+
+    on:
+      workflow_call:
+        inputs:
+          java-version:
+            required: true
+            type: string
+#        secrets:
+#          SONAR_PROJECT_KEY:
+#            required: true
+    
+    jobs:
+      lint:
+        name: Lint Java Code
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v3
+    
+#          - name: Set up JDK
+#            uses: actions/setup-java@v3
+#            with:
+#              distribution: 'temurin'
+#              java-version: ${{ inputs.java-version }}
+#              cache: maven
+    
+          - name: Run Checkstyle
+            run: mvn checkstyle:check -Dsonar.projectKey=${{ inputs.java-version }}
+    
