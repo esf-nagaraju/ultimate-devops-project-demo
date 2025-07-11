@@ -7,7 +7,7 @@ runs:
     #- uses: actions/checkout@v3
     - run: 
         shell: bash
-        echo "Setting up Java ${{ inputs.java }}"
+        echo: Setting up Java ${{ inputs.java }}
 
 
 inputs:
