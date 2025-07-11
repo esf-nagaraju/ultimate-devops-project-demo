@@ -19,7 +19,5 @@
         name: Lint Java Code
         runs-on: ubuntu-latest
         steps:
-   
-          - name: Run Checkstyle
-            run: ehco "Running Java $ {{ input. java-version}}"
+          - run: echo "Running on Java Version ${{ inputs.java-version }}"
     
