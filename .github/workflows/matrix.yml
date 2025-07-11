@@ -17,6 +17,6 @@ jobs:
         java: [11,17]
     steps:
       - uses: ./.github/actions/setup-java
-      with:
-        java: 17
+        with:
+          java: 17
     
